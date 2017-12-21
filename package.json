@@ -1,0 +1,14 @@
+{
+  "name": "minihearing",
+  "version": "0.0.1",
+  "description": "Mini Hearing's code challenge",
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "Loïc Hamet",
+  "license": "UNLICENSED"
+}

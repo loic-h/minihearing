@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import events from '../events';
+import Loading from './loading';
 
 export default class Artists extends React.Component {
 
@@ -59,7 +60,7 @@ export default class Artists extends React.Component {
     return (
       <div className="artists">
         {!this.state.artists ? (
-          <div>Loading...</div>
+          <Loading />
         ) : (
           this.state.artists.map((artist, index) => (
             <div key={index} className="artists-item artist" onClick={e => events.emit('SELECT_ARTIST', artist)}>

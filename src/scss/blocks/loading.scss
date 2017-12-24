@@ -1,0 +1,43 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  height: 21px;
+  margin: $base;
+
+  div {
+    background-color: $bkgFigure;
+    height: 100%;
+    width: 6px;
+    margin: 1px;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  }
+
+  div:nth-child(2) {
+    animation-delay: -1.1s;
+  }
+
+  div:nth-child(3) {
+    animation-delay: -1.0s;
+  }
+
+  div:nth-child(4) {
+    animation-delay: -0.9s;
+  }
+
+  div:nth-child(5) {
+    animation-delay: -0.8s;
+  }
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { transform: scaleY(0.7) }
+  20% { transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.7);
+  }  20% {
+    transform: scaleY(1.0);
+  }
+}

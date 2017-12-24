@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import events from '../events';
+import Loading from './loading';
 
 export default class Artist extends React.Component {
 
@@ -101,7 +102,7 @@ export default class Artist extends React.Component {
             </div>
           ))}
           {this.state.loading &&
-            <div>Loading...</div>
+            <Loading />
           }
         </div>
       </div>

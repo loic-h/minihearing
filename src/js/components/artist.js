@@ -65,9 +65,14 @@ export default class Artist extends React.Component {
     }
   }
 
+  onBackClick() {
+    events.emit('SELECT_ARTIST', null);
+  }
+
   render() {
     return (
       <div className="artist">
+        <button className="back" onClick={e => this.onBackClick()}>back</button>
         <figure>
           <img src={this.props.body.avatar_url} alt={this.props.body.username} />
         </figure>

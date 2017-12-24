@@ -1,5 +1,90 @@
 html,
 body {
-	font-family: sans-serif;
-	font-size: 1em;
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+.back {
+  margin-bottom: $base;
+  cursor: pointer;
+
+  &:before {
+    content: '←';
+    margin-right: $base/2;
+    text-decoration: none !important;
+  }
+
+  &:hover {
+    span {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin figure {
+  position: relative;
+
+  div {
+    background: $bkgFigure;
+    padding-top: 100%;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@mixin triangle($height, $width, $color, $way) {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  display: block;
+
+  @if $way == "north" {
+    border-left-width: $width / 2;
+    border-right-width: $width / 2;
+    border-bottom-width: $height;
+    border-bottom-color: $color;
+  } @else if $way == "east" {
+    border-top-width: $width / 2;
+    border-bottom-width: $width / 2;
+    border-left-width: $height;
+    border-left-color: $color;
+  } @else if $way == "south" {
+    border-left-width: $width / 2;
+    border-right-width: $width / 2;
+    border-top-width: $height;
+    border-top-color: $color;
+  } @else if $way == "west" {
+    border-top-width: $width / 2;
+    border-bottom-width: $width / 2;
+    border-right-width: $height;
+    border-right-color: $color;
+  }
+}
+
+.play-button {
+  margin-right: $base/2;
+  opacity: 0.3;
+  transition: opacity $easeDuration $easeFunction;
+  border: $black solid 3px;
+  border-radius: 50%;
+  position: relative;
+  width: $base*2;
+  height: $base*2;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    $size: $base*0.75;
+    @include triangle($size*0.9, $size, $black, east);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+  }
 }

@@ -1,0 +1,47 @@
+.artist {
+  display: flex;
+  align-items: stretch;
+  padding-bottom: $base;
+  border-bottom: rgba($black, 0.2) solid 1px;
+  transition: border-color $easeDuration $easeFunction;
+  cursor: pointer;
+
+  &__figure {
+    position: relative;
+    margin-right: $base;
+    width: 30%;
+    @include figure();
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 2em;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+  &__infos {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.8em;
+    color: rgba($black, 0.5);
+
+    li {
+      display: inline-block;
+
+      &:not(:last-child) {
+
+        &:after {
+          content: '•';
+          margin: 0 $base/2;
+        }
+      }
+    }
+  }
+}

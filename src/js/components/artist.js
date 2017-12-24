@@ -71,24 +71,33 @@ export default class Artist extends React.Component {
 
   render() {
     return (
-      <div className="artist">
-        <button className="back" onClick={e => this.onBackClick()}>back</button>
-        <figure>
-          <img src={this.props.body.avatar_url} alt={this.props.body.username} />
-        </figure>
-        <h3>{this.props.body.username}</h3>
-        <ul className="artist-infos">
-          <li className="artist-info artist-info--tracks">
-            {this.props.body.track_count} tracks
-          </li>
-          <li className="artist-info artist-info--followers">
-            {this.props.body.followers_count} followers
-          </li>
-        </ul>
+      <div>
+        <button className="back" onClick={e => this.onBackClick()}>
+          <span>back</span>
+        </button>
+        <div className="artist">
+          <figure className="artist__figure">
+            <div>
+              <img src={this.props.body.avatar_url} alt={this.props.body.username} />
+            </div>
+          </figure>
+          <div className="artist__content">
+            <h2 className="artist__title">{this.props.body.username}</h2>
+            <ul className="artist__infos">
+              <li className="artist__info artist__info--tracks">
+                {this.props.body.track_count} tracks
+              </li>
+              <li className="artist__info artist__info--followers">
+                {this.props.body.followers_count} followers
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="tracks">
           {this.state.tracks.map((track, index) => (
             <div className="track" key={index} onClick={e => this.onTrackClick(track)}>
-              <h4>{track.title}</h4>
+              <button className="track__button"></button>
+              <h4 className="track__title">{track.title}</h4>
             </div>
           ))}
           {this.state.loading &&

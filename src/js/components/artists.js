@@ -62,19 +62,19 @@ export default class Artists extends React.Component {
           <div>Loading...</div>
         ) : (
           this.state.artists.map((artist, index) => (
-            <div key={index} className="artists-item" onClick={e => events.emit('SELECT_ARTIST', artist)}>
-              <figure className="artists-item-figure">
-                <div className="artists-item-figure__container">
+            <div key={index} className="artists-item artist" onClick={e => events.emit('SELECT_ARTIST', artist)}>
+              <figure className="artist__figure">
+                <div>
                   <img src={artist.avatar_url} alt={artist.username} />
                 </div>
               </figure>
-              <div className="artists-item__content">
-                <h3 className="artists-item__title">{artist.username}</h3>
-                <ul className="artists-item__infos">
-                  <li className="artists-item__info artists-item__info--tracks">
+              <div className="artist__content">
+                <h2 className="artist__title">{artist.username}</h2>
+                <ul className="artist__infos">
+                  <li className="artist__info artist__info--tracks">
                     {artist.track_count} tracks
                   </li>
-                  <li className="artists-item__info artists-item__info--followers">
+                  <li className="artist__info artist__info--followers">
                     {artist.followers_count} followers
                   </li>
                 </ul>

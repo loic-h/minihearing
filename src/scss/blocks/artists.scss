@@ -1,66 +1,18 @@
 .artists {
 
   &-item {
-    display: flex;
-    align-items: stretch;
     padding-bottom: $base;
     margin-bottom: $base;
     border-bottom: rgba($black, 0.2) solid 1px;
     transition: border-color $easeDuration $easeFunction;
     cursor: pointer;
 
-    &-figure {
-      position: relative;
-      margin-right: $base;
-      width: 15%;
-
-      &__container {
-        background: $bkgFigure;
-        padding-top: 100%;
-      }
-
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-    }
-
-    &__content {
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    &__title {
-      font-size: 2em;
-      margin-bottom: 0;
-      font-weight: normal;
-    }
-
-    &__infos {
-      position: absolute;
-      bottom: 0;
-      font-size: 0.8em;
-      color: rgba($black, 0.5);
-
-      li {
-        display: inline-block;
-
-        &:not(:last-child) {
-
-          &:after {
-            content: '•';
-            margin: 0 $base/2;
-          }
-        }
-      }
-    }
-
     &:hover {
       border-color: $black;
+    }
+
+    .artist__figure {
+      width: 15%;
     }
   }
 }

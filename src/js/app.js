@@ -30,12 +30,14 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        {this.state.artist ? (
-          <Artist body={this.state.artist} />
-        ) : (
-          <Top url={top_url} />
-        )}
-        <Player track={this.state.track} />
+        <div className="content">
+          {this.state.artist ? (
+            <Artist body={this.state.artist} />
+          ) : (
+            <Top url={top_url} />
+          )}
+          <Player track={this.state.track} />
+        </div>
       </div>
     )
   }

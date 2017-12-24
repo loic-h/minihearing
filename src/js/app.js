@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import events from './events';
-import Top from './components/top';
+import Artists from './components/artists';
 import Artist from './components/artist';
 import Player from './components/player';
 
@@ -34,7 +34,7 @@ class App extends React.Component {
           {this.state.artist ? (
             <Artist body={this.state.artist} />
           ) : (
-            <Top url={top_url} />
+            <Artists url={top_url} />
           )}
           <Player track={this.state.track} />
         </div>

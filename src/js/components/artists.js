@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import events from '../events';
 
-export default class Top extends React.Component {
+export default class Artists extends React.Component {
 
   constructor(props) {
     super(props);
@@ -57,21 +57,21 @@ export default class Top extends React.Component {
 
   render() {
     return (
-      <div className="top">
+      <div className="artists">
         {!this.state.artists ? (
           <div>Loading...</div>
         ) : (
           this.state.artists.map((artist, index) => (
-            <div key={index} className="artist" onClick={e => events.emit('SELECT_ARTIST', artist)}>
+            <div key={index} className="artists-item" onClick={e => events.emit('SELECT_ARTIST', artist)}>
               <figure>
                 <img src={artist.avatar_url} alt={artist.username} />
               </figure>
               <h3>{artist.username}</h3>
-              <ul className="artist-infos">
-                <li className="artist-info artist-info--tracks">
+              <ul className="artists-item__infos">
+                <li className="artists-item__info artists-item__info--tracks">
                   {artist.track_count} tracks
                 </li>
-                <li className="artist-info artist-info--followers">
+                <li className="artists-item__info artists-item__info--followers">
                   {artist.followers_count} followers
                 </li>
               </ul>
@@ -83,7 +83,7 @@ export default class Top extends React.Component {
   }
 }
 
-Top.propTypes = {
+Artists.propTypes = {
   url: PropTypes.string,
   onClick: PropTypes.func
 }

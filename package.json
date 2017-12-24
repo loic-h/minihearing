@@ -7,7 +7,7 @@
     "watch:js": "watchify src/js/app.js -o dist/app.js -d -t [babelify --presets [ env react ] ]",
     "build:css": "node-sass src/scss/app.scss dist/app.css",
     "build:js": "browserify -d src/js/app.js -o dist/app.js -t [ babelify --presets [ env react ] ]",
-    "watch": "npm-run-all watch:css watch:js",
+    "watch": "npm-run-all -p watch:css watch:js",
     "start": "npm-run-all build:css build:js"
   },
   "repository": {

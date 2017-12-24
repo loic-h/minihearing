@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import page from 'page';
-import Top from './components/top'
+import events from './events';
+import Top from './components/top';
+import Artist from './components/artist';
+import Player from './components/player';
 
 const top_url = 'https://api-v2.hearthis.at/feed/?type=popular&page=1&count=5';
-
-const routes = {
-  '/': Top
-}
 
 class App extends React.Component {
 
@@ -15,75 +13,29 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      component: <div>Loading</div>,
-      artists: []
+      artist: null
     }
   }
 
   componentDidMount() {
-    this.initRouter();
-    this.initArtists()
-  }
-
-  initRouter() {
-    Object.keys(routes).forEach(path => {
-      const Component = routes[path];
-
-      page(path, ctx => {
-        this.setState({component: <Component params={ctx.params} />});
-      });
+    events.on('SELECT_ARTIST', (artist) => {
+      this.setState({artist});
     });
 
-    page();
-  }
-
-  initArtists() {
-    this.fetchArtists()
-      .then(artists  => {
-        const promises = artists.map(artist => this.fetchArtist(artist.uri));
-        Promise.all(promises).then(artists => {
-          this.setState({
-            artists: artists
-          });
-        });
-      });
-  }
-
-  fetchArtists() {
-    return new Promise((resolve, reject) => {
-      fetch(top_url)
-        .then(res => res.json())
-        .then(tracks => {
-          const users = {};
-          for (let i in tracks) {
-            const user = tracks[i].user;
-            // be sure to have distinct artists
-            if (!users[user.id]) {
-              users[user.id] = user;
-            }
-          }
-          resolve(Object.values(users));
-        })
-        .catch(reject);
-    });
-  }
-
-  fetchArtist(uri) {
-    return new Promise((resolve, reject) => {
-      fetch(uri)
-        .then(res => res.json())
-        .then(json => {
-          resolve(json);
-        })
-        .catch(reject);
-    });
+    events.on('PLAY_TRACK', (track) => {
+      this.setState({track});
+    })
   }
 
   render() {
-
     return (
       <div id="app">
-        <Top artists={this.state.artists} />
+        {this.state.artist ? (
+          <Artist body={this.state.artist} />
+        ) : (
+          <Top url={top_url} />
+        )}
+        <Player track={this.state.track} />
       </div>
     )
   }

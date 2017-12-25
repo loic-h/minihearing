@@ -20,9 +20,10 @@ export default class Artists extends React.Component {
      this.fetchArtists()
        .then(artists  => {
          const promises = artists.map(artist => this.fetchArtist(artist.uri));
-         Promise.all(promises).then(artists => {
-           this.setState({artists});
-         });
+         Promise.all(promises)
+           .then(artists => {
+             this.setState({artists});
+           });
        });
    }
 
@@ -49,9 +50,7 @@ export default class Artists extends React.Component {
      return new Promise((resolve, reject) => {
        fetch(uri)
          .then(res => res.json())
-         .then(json => {
-           resolve(json);
-         })
+         .then(resolve)
          .catch(reject);
      });
    }
@@ -84,7 +83,7 @@ export default class Artists extends React.Component {
           ))
         )}
       </div>
-    )
+    );
   }
 }
 

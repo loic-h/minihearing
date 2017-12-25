@@ -17,6 +17,7 @@ export default class Artist extends React.Component {
 
   componentDidMount() {
     this.fetchTracks();
+    // scroll window back to top
     window.scrollTo(document);
     window.addEventListener('scroll', this.handlerScroll);
   }
@@ -38,9 +39,7 @@ export default class Artist extends React.Component {
         .then(json => {
           if (json.length > 0) {
             const tracks = this.state.tracks.concat(json);
-            this.setState({
-              tracks
-            });
+            this.setState({tracks});
             this.page = page;
           } else {
             this.page = null;
@@ -57,10 +56,10 @@ export default class Artist extends React.Component {
   }
 
   onScroll(e) {
-    const element = document.documentElement;
     if (this.state.loading) {
       return;
     }
+    const element = document.documentElement;
     if (element.scrollHeight - element.scrollTop === element.clientHeight) {
       this.fetchTracks();
     }

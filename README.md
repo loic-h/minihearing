@@ -4,14 +4,12 @@
 Run
 ```
 npm install
-```
-Serve dist folder
-
-# Development
-Run
-```
+# production:
+npm start
+# development
 npm run watch
 ```
+Serve dist folder
 
 # Demo
 http://minihearing.loiic.com

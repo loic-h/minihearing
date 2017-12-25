@@ -23,7 +23,9 @@ class App extends React.Component {
     });
 
     events.on('PLAY_TRACK', (track) => {
-      this.setState({track});
+      this.setState({track}, () => {
+        this.setState({track: null});
+      });
     })
   }
 

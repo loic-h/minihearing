@@ -21,7 +21,7 @@ export default class Player extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.audio.addEventListener('canplaythrough', this.handlerStreamReady);
     this.audio.addEventListener('ended', this.handlerStreamEnd);
-    if (nextProps.track) {
+    if (nextProps.track && nextProps.track.stream_url !== this.state.stream) {
       this.setState({
         stream: nextProps.track.stream_url,
         title: nextProps.track.title,

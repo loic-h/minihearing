@@ -21,6 +21,8 @@
   }
 
   &__button {
-    @extend .play-button;
+    @include play-button;
+    opacity: 0.3;
+    transition: opacity $easeDuration $easeFunction;
   }
 }

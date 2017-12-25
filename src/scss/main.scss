@@ -67,24 +67,43 @@ body {
   }
 }
 
-.play-button {
+@mixin button($size, $color) {
   margin-right: $base/2;
-  opacity: 0.3;
-  transition: opacity $easeDuration $easeFunction;
-  border: $black solid 3px;
+  border: $color solid 3px;
   border-radius: 50%;
   position: relative;
-  width: $base*2;
-  height: $base*2;
+  width: $size;
+  height: $size;
   cursor: pointer;
+}
+
+@mixin play-button($size: $base*2, $color: $black) {
+  @include button($size, $color);
 
   &:before {
     content: '';
-    $size: $base*0.75;
-    @include triangle($size*0.9, $size, $black, east);
+    $triangle-size: $size*0.4;
+    @include triangle($triangle-size*0.9, $triangle-size, $color, east);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-25%, -50%);
+  }
+}
+
+@mixin pause-button($size: $base*2, $color: $black) {
+  @include button($size, $color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    height: $size*0.4;
+    width: $size*0.15;
+    background: $color;
+    margin: $size*0.05;
   }
 }

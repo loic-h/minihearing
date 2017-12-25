@@ -1,9 +1,44 @@
 .player {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: $playerHeight;
-	background: $black;
-	color: $white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $playerHeight;
+  background: $black;
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__button {
+    margin-bottom: $base/2;
+  }
+
+  &__label {
+    height: 1em;
+    font-size: 0.8em;
+  }
+
+  &__artist {
+
+    &:after {
+      content: '•';
+      margin: 0 $base/2;
+    }
+  }
+
+  &.playing {
+
+    .player__button {
+      @include pause-button($base*2, $white);
+    }
+  }
+
+  &:not(.playing) {
+
+    .player__button {
+      @include play-button($base*2, $white);
+    }
+  }
 }

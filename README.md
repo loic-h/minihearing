@@ -14,4 +14,4 @@ npm run watch
 ```
 
 # Demo
-[http://minihearing.loiic.com]
+http://minihearing.loiic.com

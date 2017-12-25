@@ -4,7 +4,7 @@
 Run
 ```
 npm install
-# production:
+# production
 npm start
 # development
 npm run watch

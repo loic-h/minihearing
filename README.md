@@ -2,6 +2,8 @@
 
 # Installation
 ```
+git clone git@github.com:loic-h/minihearing.git
+
 npm install
 
 # production
